@@ -8,12 +8,9 @@ import org.springframework.stereotype.Service;
 public class ClientService {
 
     public ClienteInfo consultarCliente(String tipoDocumento, String numeroDocumento) {
-        // Lógica para validar los parámetros y generar la respuesta
         if (!validarTipoDocumento(tipoDocumento) || !validarNumeroDocumento(numeroDocumento)) {
             throw new ClienteException(400, "Parámetros de entrada inválidos");
         }
-
-        // Lógica para "quemar" los datos del cliente
         ClienteInfo clienteInfo = new ClienteInfo();
         clienteInfo.setPrimerNombre("Juan");
         clienteInfo.setSegundoNombre("Carlos");
@@ -30,7 +27,6 @@ public class ClientService {
         if (tipoDocumento == null || tipoDocumento.isEmpty()) {
             throw new ClienteException(400, "El tipo de documento es obligatorio");
         }
-
         return tipoDocumento.equals("C") || tipoDocumento.equals("P");
     }
 
@@ -38,9 +34,6 @@ public class ClientService {
         if (numeroDocumento == null || numeroDocumento.isEmpty()) {
             throw new ClienteException(400, "El número de documento es obligatorio");
         }
-
-        // Lógica adicional de validación si es necesario
-
         return true;
     }
 }
